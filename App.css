@@ -13,10 +13,83 @@ h1 {
     color: rgb(1, 1, 59);
 }
 
-.search {
-    width: 30%;
+.gallery {
+    display: grid;
+    width: 90%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
-ul li {
-    font-size: 20px;
+.gallery__item {
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s ease-in-out;
+}
+
+.gallery__item img:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 950px) {
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+
+/*Image modal*/
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.733);
+    margin-top: -1px;
+    animation: zoom 0.3s ease-in-out;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.modal img {
+    width: 50%;
+    object-fit: cover;
+}
+
+.closeBtn {
+    color: rgba(255, 255, 255, 0.87);
+    font-size: 25px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 20px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.closeBtn:hover {
+    color: rgb(255, 255, 255);
 }

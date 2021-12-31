@@ -1,29 +1,17 @@
 import { React, useState } from "react";
-import TextField from "@mui/material/TextField";
-import List from "./Components/List";
 import "./App.css";
+import Gallery from "./Components/Gallery";
+import Modal from "./Components/Modal";
 
 function App() {
-  const [inputText, setInputText] = useState("");
-  let inputHandler = (e) => {
-    //convert input text to lower case
-    var lowerCase = e.target.value.toLowerCase();
-    setInputText(lowerCase);
-  };
+  const [imgSrc, setImgSrc] = useState("");
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="main">
-      <h1>React Search</h1>
-      <div className="search">
-        <TextField
-          id="outlined-basic"
-          onChange={inputHandler}
-          variant="outlined"
-          fullWidth
-          label="Search"
-        />
-      </div>
-      <List input={inputText} />
+      <h1>React Carousel</h1>
+      <Gallery setImgSrc={setImgSrc} setOpen={setOpen} />
+      {open ? <Modal src={imgSrc} setOpen={setOpen}/> : null}
     </div>
   );
 }
